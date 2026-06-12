@@ -121,6 +121,42 @@ admin accounts).
 See [`password-reset-playbook-flowchart.md`](./password-reset-playbook-flowchart.md)
 for a Mermaid flowchart of this playbook. GitLab renders Mermaid diagrams natively.
 
+## Challenges and Considerations
+
+Key challenges to plan for when building and operating this playbook:
+
+- **Privileged permissions risk.** The Logic App identity needs powerful Graph
+  permissions (password reset, session revocation). If compromised, it becomes a
+  high-value target. Use least privilege, scope tightly, and monitor its usage.
+- **Resetting privileged / admin accounts.** Standard roles cannot reset
+  passwords for admins. Resetting an admin requires Privileged Authentication
+  Administrator, and automating this is risky. Consider excluding admin accounts
+  or routing them to manual handling.
+- **False positives.** Automatically resetting passwords on a false-positive
+  alert disrupts legitimate users. An approval step (human-in-the-loop) is
+  strongly recommended before forcing resets.
+- **Account lockout / business disruption.** Forced resets plus session
+  revocation can lock users out mid-work, including service or break-glass
+  accounts. Maintain an exclusion list for critical accounts.
+- **Entity resolution.** The incident may not cleanly map to a single Entra ID
+  user (UPN vs. SID vs. display name mismatches). Handle missing or ambiguous
+  account entities gracefully.
+- **Authentication & token expiry.** Managed identity tokens, admin consent, and
+  Graph permission changes can break the playbook silently. Build error handling
+  and alert on Logic App run failures.
+- **API throttling & limits.** Microsoft Graph enforces rate limits; bulk
+  incidents can trigger throttling. Add retry/backoff logic.
+- **Communicating the new password.** Securely delivering a temporary password or
+  reset link to the (possibly compromised) user is non-trivial. Prefer
+  self-service reset flows or out-of-band channels.
+- **Auditability & compliance.** Every automated reset must be logged for audit
+  and compliance. Ensure incident comments and Entra ID audit logs capture who/
+  what/when.
+- **Testing safely.** Testing against real users is dangerous. Use dedicated test
+  accounts and a non-production tenant where possible.
+- **Cost.** Logic Apps bill per action/execution; high incident volume increases
+  cost.
+
 ## References
 
 - Automate threat response with playbooks: https://learn.microsoft.com/azure/sentinel/automate-responses-with-playbooks
