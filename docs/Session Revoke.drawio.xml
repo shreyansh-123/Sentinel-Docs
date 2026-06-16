@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="User Session Revoke Playbook" id="4-22lCC95-4GJYtv6ixf">
+    <mxGraphModel dx="774" dy="451" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Analyst initiates playbook for a specific user" vertex="1">
+          <mxGeometry height="60" width="200" x="360" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Identify target user\n(user ID / UPN)" vertex="1">
+          <mxGeometry height="60" width="200" x="360" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Valid user ?" vertex="1">
+          <mxGeometry height="100" width="200" x="360" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shape=terminator;" value="End: Log &amp;amp; close (no action required)" vertex="1">
+          <mxGeometry height="50" width="200" x="640" y="425" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Revoke user session(invalidate active sessions /force sign-out &amp;amp; reset tokens)" vertex="1">
+          <mxGeometry height="70" width="200" x="360" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-7" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Revoke successful?" vertex="1">
+          <mxGeometry height="100" width="200" x="360" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Escalate / retry\nmanual revoke" vertex="1">
+          <mxGeometry height="50" width="200" x="640" y="695" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Initiate email notification to SOC team (action, user, timestamp)" vertex="1">
+          <mxGeometry height="70" width="200" x="360" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Update details in Sentinel incident comment section" vertex="1">
+          <mxGeometry height="70" width="200" x="360" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-13" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-14" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-15" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-6" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-16" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-5" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-17" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-18" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-8" value="No">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-20" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-9" value="Yes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AOPzXxmJyy5eyJCiGppB-21" edge="1" parent="1" source="AOPzXxmJyy5eyJCiGppB-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="AOPzXxmJyy5eyJCiGppB-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
